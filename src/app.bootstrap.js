@@ -1,9 +1,9 @@
-
 import { port } from '../config/config.service.js'
-import { connectDB, syncDB, connectRedis } from './DB/index.js'
+import { connectDB, syncDB, connectRedis, userModel, WalletModel } from './DB/index.js'
 import { globalErrorHandler } from './middleware/index.js'
 import { authRouter, userRouter } from './modules/index.js'
 import express from 'express'
+
 
 async function bootstrap() {
     const app = express()
@@ -17,14 +17,12 @@ async function bootstrap() {
     app.get('/', (req, res) => res.send('Hello World!'))
     app.use('/auth', authRouter)
     app.use('/user', userRouter)
-
-
+            
     //invalid routing
     app.use('{/*dummy}', (req, res) => {
         return res.status(404).json({ message: "Invalid application routing" })
     })
-    
-    
+
     //error-handling
     app.use(globalErrorHandler)
     

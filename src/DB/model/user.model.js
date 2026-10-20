@@ -2,6 +2,7 @@ import { DataTypes, Sequelize } from "sequelize";
 import { sequelize } from "../connection.db.js";
 import { generateHash } from "../../comman/utiltes/security/index.js";
 import { encrypt, decrypt } from "../../comman/utiltes/security/encryption.security.js";
+import { WalletModel } from "./wallet.model.js";
 
 export const userModel = sequelize.define(
   'user',
@@ -73,3 +74,10 @@ userModel.afterFind(async (user, options) => {
   }
 })
 
+
+userModel.hasOne(WalletModel,{
+  foreignKey:"ID"
+})
+WalletModel.belongsTo(userModel,{
+    foreignKey:"userId"
+})
