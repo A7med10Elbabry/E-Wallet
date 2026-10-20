@@ -1,0 +1,27 @@
+{
+  "name": "projectstructure",
+  "version": "1.0.0",
+  "main": "./src/main.js",
+  "type": "module",
+  "scripts": {
+    "start:dev": "cross-env NODE_ENV=development  node --watch-path=. ./src/main.js",
+    "start:prod": "cross-env NODE_ENV=production  node  ./src/main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cross-env": "^10.1.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "joi": "^18.2.9",
+    "jsonwebtoken": "^9.0.3",
+    "nodemailer": "^10.1.6",
+    "pg": "^8.23.0",
+    "pg-hstore": "^2.3.4",
+    "redis": "^6.2.1",
+    "sequelize": "^6.37.8"
+  }
+}
